@@ -1,10 +1,12 @@
 from flask import Flask, render_template
+from solidspotify.util.enums.http import HTTPMethod
 
 from solidspotify.modules.solid.client import client
-print(client)
-# from models.track import Track
+response = client.fetch('http://localhost:3000')
+print(response)
 
-# track = Track()
+put_response = client.fetch('http://localhost:3000/test/test.ttl',
+                            method=HTTPMethod.PUT, body='<ex:s> <ex:p> <ex:o>.')
 
 app = Flask(__name__)
 
